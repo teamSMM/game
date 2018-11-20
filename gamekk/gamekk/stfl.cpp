@@ -4,8 +4,16 @@ int main()
 {
     // Назва і розмір вікна
 	RenderWindow window(sf::VideoMode(1920, 1080), "random nazva", Style::Fullscreen);
-	CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Red);
+	
+	Image heroimage;
+	heroimage.loadFromFile("images/hero.png");
+
+	Texture herotexture;
+	herotexture.loadFromImage(heroimage);
+
+	Sprite herosprite;
+	herosprite.setTexture(herotexture);
+	herosprite.setPosition(50, 25);
 
     // Головний цикл
     while(window.isOpen())
@@ -24,11 +32,10 @@ int main()
                 window.close();
         }
 
-        // Очистка
+        
         window.clear();
-        // Тут будут вызываться функции обновления и отрисовки объектов
-        // Отрисовка
-		window.draw(shape);
+       
+		window.draw(herosprite);
         window.display();
     }
 
